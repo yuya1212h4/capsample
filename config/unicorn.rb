@@ -13,13 +13,13 @@ worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 # stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
 # stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
 working_directory app_path
-listen "#{app_path}/tmp/sockets/unicorn.sock"
+# listen "#{app_path}/tmp/sockets/unicorn.sock"
 pid "#{app_path}/tmp/pids/unicorn.pid"
 stderr_path "#{app_path}/log/unicorn.stderr.log"
 stdout_path "#{app_path}/log/unicorn.stdout.log"
 
-# listen 3000
-listen File.expand_path('/var/www/capsample/shared/tmp/sockets/unicorn.sock', __FILE__)
+listen 3000
+# listen File.expand_path('/var/www/capsample/shared/tmp/sockets/unicorn.sock', __FILE__)
 timeout 180
 
 preload_app true
