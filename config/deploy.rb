@@ -33,6 +33,42 @@ set :bundle_binstubs, -> { shared_path.join('bin') }
 set :log_level, :debug
 
 namespace :deploy do
+
+  # task :init_permission do
+  #   on release_roles :all do
+  #     execute :sudo, :chown, '-R', "#{fetch(:user)}:#{fetch(:group)}", deploy_to
+  #   end
+  # end
+  #
+  # task :reset_permission do
+  #   on release_roles :all do
+  #     execute :sudo, :chown, '-R', "nginx:nginx", deploy_to
+  #   end
+  # end
+  #
+  # before :starting, :init_permission
+  # after :finished, :reset_permission
+
+  # Rake::Task["deploy:check:directories"].clear
+  # Rake::Task["deploy:check:linked_dirs"].clear
+  #
+  #
+  # namespace :check do
+  #   desc '(overwrite) Check shared and release directories exist'
+  #   task :directories do
+  #     on release_roles :all do
+  #       execute :sudo, :mkdir, '-pv', shared_path, releases_path
+  #     end
+  #   end
+  #
+  #   task :linked_dirs do
+  #     next unless any? :linked_dirs
+  #     on release_roles :all do
+  #       execute :sudo, :mkdir, '-pv', linked_dirs(shared_path)
+  #     end
+  #   end
+  # end
+
   desc 'Restart application'
   task :restart do
     invoke 'unicorn:restart'
