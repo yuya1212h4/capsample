@@ -1,4 +1,4 @@
-app_path = "/var/www/capsample"
+app_path = File.expand_path('../../', __FILE__)
 
 before_exec do |server|
   # ENV['BUNDLE_GEMFILE'] = File.expand_path('Gemfile', "/var/www/capsample/current")
@@ -12,7 +12,7 @@ worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 # pid "#{app_path}/shared/tmp/pids/unicorn.pid"
 # stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
 # stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
-working_directory "#{app_path}"
+working_directory app_path
 listen "#{app_path}/tmp/sockets/unicorn.sock"
 pid "#{app_path}/tmp/pids/unicorn.pid"
 stderr_path "#{app_path}/log/unicorn.stderr.log"
