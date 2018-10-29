@@ -3,8 +3,8 @@ app_path = "/var/www/waffle"
 before_exec do |server|
   ENV['BUNDLE_GEMFILE'] = File.expand_path('Gemfile', "/var/www/waffle/current")
 end
-# worker_processes 1
-worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
+worker_processes 1
+# worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 
 working_directory "#{app_path}/current"
 listen "#{app_path}/shared/tmp/sockets/unicorn.sock"
