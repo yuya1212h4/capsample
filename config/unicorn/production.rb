@@ -1,25 +1,19 @@
-app_path = File.expand_path('../../', __FILE__)
+app_path = "/var/www/waffle"
 
 before_exec do |server|
-  # ENV['BUNDLE_GEMFILE'] = File.expand_path('Gemfile', "/var/www/capsample/current")
-  ENV['BUNDLE_GEMFILE'] = File.expand_path('Gemfile', "/var/www/capsample")
+  ENV['BUNDLE_GEMFILE'] = File.expand_path('Gemfile', "/var/www/waffle/current")
 end
 # worker_processes 1
 worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
 
-# working_directory "#{app_path}/current"
-# listen "#{app_path}/shared/tmp/sockets/unicorn.sock"
-# pid "#{app_path}/shared/tmp/pids/unicorn.pid"
-# stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
-# stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
-working_directory app_path
-# listen "#{app_path}/tmp/sockets/unicorn.sock"
-pid "#{app_path}/tmp/pids/unicorn.pid"
-stderr_path "#{app_path}/log/unicorn.stderr.log"
-stdout_path "#{app_path}/log/unicorn.stdout.log"
+working_directory "#{app_path}/current"
+listen "#{app_path}/shared/tmp/sockets/unicorn.sock"
+pid "#{app_path}/shared/tmp/pids/unicorn.pid"
+stderr_path "#{app_path}/shared/log/unicorn.stderr.log"
+stdout_path "#{app_path}/shared/log/unicorn.stdout.log"
 
-listen 3000
-# listen File.expand_path('/var/www/capsample/shared/tmp/sockets/unicorn.sock', __FILE__)
+# listen 3000
+listen File.expand_path('/var/www/waffle/shared/tmp/sockets/unicorn.sock', __FILE__)
 timeout 180
 
 preload_app true
