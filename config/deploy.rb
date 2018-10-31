@@ -34,20 +34,20 @@ set :log_level, :debug
 
 namespace :deploy do
 
-  # task :init_permission do
-  #   on release_roles :all do
-  #     execute :sudo, :chown, '-R', "#{fetch(:user)}:#{fetch(:group)}", deploy_to
-  #   end
-  # end
-  #
-  # task :reset_permission do
-  #   on release_roles :all do
-  #     execute :sudo, :chown, '-R', "nginx:nginx", deploy_to
-  #   end
-  # end
-  #
-  # before :starting, :init_permission
-  # after :finished, :reset_permission
+  task :init_permission do
+    on release_roles :all do
+      execute :sudo, :chown, '-R', "#{fetch(:user)}:#{fetch(:group)}", deploy_to
+    end
+  end
+
+  task :reset_permission do
+    on release_roles :all do
+      execute :sudo, :chown, '-R', "nginx:nginx", deploy_to
+    end
+  end
+
+  before :starting, :init_permission
+  after :finished, :reset_permission
 
   # Rake::Task["deploy:check:directories"].clear
   # Rake::Task["deploy:check:linked_dirs"].clear
