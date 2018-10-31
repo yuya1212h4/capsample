@@ -5,7 +5,7 @@ lock "~> 3.11.0"
 set :application, 'capsample'
 
 # cloneするgitのレポジトリ
-set :repo_url, 'git@gitlab.com:yuya1212h4/capsample.git'
+set :repo_url, 'git@github.com:yuya1212h4/capsample.git'
 
 set :ssh_options, auth_methods: ['publickey'],
                   keys: ['~/.ssh/google_compute_engine']
@@ -49,8 +49,8 @@ namespace :deploy do
   # before :starting, :init_permission
   # after :finished, :reset_permission
 
-  Rake::Task["deploy:check:directories"].clear
-  Rake::Task["deploy:check:linked_dirs"].clear
+  # Rake::Task["deploy:check:directories"].clear
+  # Rake::Task["deploy:check:linked_dirs"].clear
 
   namespace :check do
     desc '(overwrite) Check shared and release directories exist'
