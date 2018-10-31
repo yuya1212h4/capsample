@@ -49,8 +49,8 @@ namespace :deploy do
   before :starting, :init_permission
   after :finished, :reset_permission
 
-  # Rake::Task["deploy:check:directories"].clear
-  # Rake::Task["deploy:check:linked_dirs"].clear
+  Rake::Task["deploy:check:directories"].clear
+  Rake::Task["deploy:check:linked_dirs"].clear
 
   namespace :check do
     desc '(overwrite) Check shared and release directories exist'
